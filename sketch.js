@@ -12,20 +12,14 @@ function setup() {
   voronoiCellStroke(0); 
   voronoiSiteStroke(0); 
   voronoiSiteFlag(false); 
-  
-//   voronoiRndSites(30, 50); 
-//   voronoiSites([[200, 300, [240, 255, 255, 0.3]]]); 
-  
-//   voronoi(800, height - 50, true); 
 
-  slider = createSlider(20, 100, 1, 1); 
+  slider = createSlider(5, 100, 1, 1); 
   slider.position(width - 300, height - 30); 
   
   
   generatebutton = createButton('generate new pattern'); 
   generatebutton.style('font-family', 'courier new'); 
   generatebutton.style('font-size', '16px');
-  // generatebutton.style('background-color', '#f7dfaf');
   generatebutton.position(50, height - 35); 
   generatebutton.mousePressed(generate);
 }
@@ -35,13 +29,21 @@ function draw() {
   
   textFont('courier new'); 
   textSize(16); 
-  stext = text(slider.value() + ' cells', 650, height - 15); 
+  stext = text(slider.value() * slider.value() + ' cells', 650, height - 15); 
   
   voronoiDraw(0, 0, true, false); 
 }
 
 function generate() {
   voronoiClearSites(); 
-  voronoiRndSites(slider.value(), 50); 
+  let jx = (width / slider.value()) / 2; 
+  let jy = (height / slider.value()) / 2; 
+  for (let i = 0; i < slider.value(); i++) {
+    for (let j = 0; j < slider.value(); j++) {
+      let jitterx = random(-jx, jx); 
+      let jittery = random(-jy, jy); 
+      voronoiSite((i * width / slider.value()) + jitterx, (j * height / slider.value()) + jittery, color(random(0, 256), 255, 255));
+    }
+  }
   voronoi(800, height - 50, true); 
 }
