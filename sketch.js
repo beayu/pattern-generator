@@ -11,7 +11,7 @@ function setup() {
   voronoiSiteStrokeWeight(3); 
   voronoiCellStroke(0); 
   voronoiSiteStroke(0); 
-  // voronoiSiteFlag(false); 
+  voronoiSiteFlag(false); 
   
 //   voronoiRndSites(30, 50); 
 //   voronoiSites([[200, 300, [240, 255, 255, 0.3]]]); 
@@ -44,10 +44,4 @@ function generate() {
   voronoiClearSites(); 
   voronoiRndSites(slider.value(), 50); 
   voronoi(800, height - 50, true); 
-}
-
-function keyPressed() {
-  if (keyCode === 32) {
-    // if automata are moving, stop
-  }
 }
