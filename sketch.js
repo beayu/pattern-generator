@@ -41,6 +41,7 @@ function draw() {
 }
 
 function generate() {
+  voronoiClearSites(); 
   voronoiRndSites(slider.value(), 50); 
   voronoi(800, height - 50, true); 
 }
