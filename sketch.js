@@ -3,7 +3,7 @@ const jitter = 0.5;
 let slider, stext, generatebutton; 
 
 function setup() {
-  createCanvas(800, 850);
+  createCanvas(800, 800);
   noSmooth(); 
   colorMode(HSB);
   
